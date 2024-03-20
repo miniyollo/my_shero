@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "210423840068",
+    "project_id": "sheroproject",
+    "storage_bucket": "sheroproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210423840068:android:e37a0c2b01813579b96b11",
+        "android_client_info": {
+          "package_name": "com.shero.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210423840068-f3eefb1s4uotaislhm7cm2v2t90f6sng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYZx6xCsaVoyDBzpKviXpEG-IWMtwT6mk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210423840068-f3eefb1s4uotaislhm7cm2v2t90f6sng.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "210423840068-hdbu2diqj2v2fdrdvolafuj7fas3rbjd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sher0Final.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
