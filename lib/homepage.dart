@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_shero/assets/theme.dart';
+import 'package:my_shero/screens/Profile/profilepage.dart';
 import 'package:my_shero/screens/SendSms/sendsms.dart';
 import 'package:my_shero/screens/locations/locations.dart';
+import 'package:shake/shake.dart';
 
 import 'screens/Auth/SignUp.dart';
 import 'screens/contacts/addnewcont.dart';
@@ -21,10 +23,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _widgetOptions = [
     SafePlacesPage(),
     GovContactsPage(),
-    SignUpPage(),
+    ProfilePage(),
     AddContact(),
     SendSms(),
   ];
+
 
   void _onItemTapped(int index) {
     setState(() {
@@ -32,7 +35,32 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+@override
+  void initState() {
+    super.initState();
+    ShakeDetector detector = ShakeDetector.autoStart(
+      onPhoneShake: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Shake!'),
+          ),
+        );
+        // Do stuff on phone shake
+      },
+      minimumShakeCount: 1,
+      shakeSlopTimeMS: 500,
+      shakeCountResetTime: 3000,
+      shakeThresholdGravity: 2.7,
+    );
+
+    // To close: detector.stopListening();
+    // ShakeDetector.waitForStart() waits for user to call detector.startListening();
+  }
+  
+
+
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(

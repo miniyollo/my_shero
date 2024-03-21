@@ -21,3 +21,12 @@ class CustomAlertDialog extends StatelessWidget {
     );
   }
 }
+
+dialogueBox(BuildContext context, String text) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(text),
+    ),
+  );
+}

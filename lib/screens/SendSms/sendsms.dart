@@ -105,10 +105,7 @@ class _SendSmsState extends State<SendSms> {
     }
   }
 
-  void _sendAlert() {
-    // Implement your logic to send an alert here
-    print('Sending alert...');
-  }
+
 
   @override
   void initState() {
@@ -133,6 +130,7 @@ class _SendSmsState extends State<SendSms> {
                 height: 20), // Provides space between the two buttons
             ElevatedButton(
               onPressed: () async {
+                // ignore: unused_local_variable
                 String recipients = "";
                 List<EmergencyContact> contactList =
                     await DatabaseHelper().getContactList();
