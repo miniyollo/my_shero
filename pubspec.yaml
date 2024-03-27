@@ -48,6 +48,10 @@ dependencies:
   background_sms: ^0.0.4
   geolocator: ^11.0.0
   shake: ^2.2.0
+  flutter_background_service: ^2.4.6
+  flutter_background_service_android: ^3.0.3
+  flutter_background_service_ios: ^2.4.0
+  flutter_local_notifications: ^8.2.0
 
 dev_dependencies:
   flutter_test:

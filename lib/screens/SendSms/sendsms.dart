@@ -5,7 +5,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:my_shero/database/model/emergencycontact.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'package:shake/shake.dart';
 import '../../database/contactdb.dart';
 
 class SendSms extends StatefulWidget {
@@ -19,6 +19,52 @@ class _SendSmsState extends State<SendSms> {
   Position? _curentPosition;
   String? _curentAddress;
   LocationPermission? permission;
+
+  ShakeDetector? _shakeDetector;
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+    _initializeShakeDetector();
+  }
+
+  @override
+  void dispose() {
+    _shakeDetector?.stopListening();
+    super.dispose();
+  }
+
+  void _initializeShakeDetector() {
+    _shakeDetector = ShakeDetector.autoStart(
+      onPhoneShake: () async {
+        // Call your method to send SMS here
+        // ignore: unused_local_variable
+        String recipients = "";
+        List<EmergencyContact> contactList =
+            await DatabaseHelper().getContactList();
+        print(contactList.length);
+        if (contactList.isEmpty) {
+          Fluttertoast.showToast(msg: "emergency contact is empty");
+        } else {
+          String messageBody =
+              "https://www.google.com/maps/search/?api=1&query=${_curentPosition!.latitude}%2C${_curentPosition!.longitude}. $_curentAddress";
+
+          if (await isPermissionGranted()) {
+            print("Permission granted");
+            for (var element in contactList) {
+              var smsResult = await _sendSms(
+                  element.number, "I am in trouble $messageBody");
+              print("SMS send result: $smsResult");
+            }
+          } else {
+            print("SMS permission not granted");
+            Fluttertoast.showToast(msg: "SMS permission not granted");
+          }
+        }
+      },
+    );
+  }
 
   _getPermission() async => await [Permission.sms].request();
 
@@ -103,15 +149,6 @@ class _SendSmsState extends State<SendSms> {
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
     }
-  }
-
-
-
-  @override
-  void initState() {
-    super.initState();
-
-    _getCurrentLocation();
   }
 
   @override
