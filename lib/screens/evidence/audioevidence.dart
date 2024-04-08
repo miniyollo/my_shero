@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
-// Add imports for using MediaStore on Android
-import 'package:android_intent_plus/android_intent.dart';
-import 'package:android_path_provider/android_path_provider.dart';
 
 class AudioRecordPage extends StatefulWidget {
   const AudioRecordPage({Key? key}) : super(key: key);
@@ -38,14 +35,12 @@ class _AudioRecordPageState extends State<AudioRecordPage> {
     print('Microphone Permission: $microphoneStatus');
     print('Storage Permission: $storageStatus');
 
-    if (microphoneStatus != PermissionStatus.granted ||
-        storageStatus != PermissionStatus.granted) {
+    if (microphoneStatus != PermissionStatus.granted || storageStatus != PermissionStatus.granted) {
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
           title: Text('Permissions error'),
-          content: Text(
-              'This app needs microphone and storage permissions to function.'),
+          content: Text('This app needs microphone and storage permissions to function.'),
           actions: <Widget>[
             TextButton(
               onPressed: () {

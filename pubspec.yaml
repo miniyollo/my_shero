@@ -58,7 +58,6 @@ dependencies:
   record_mp3: ^3.0.0
   just_audio: ^0.9.37
   on_audio_query: ^2.9.0
-  android_intent_plus: ^5.0.1
   android_path_provider: ^0.3.0
 
 
