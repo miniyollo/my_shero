@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/screens/evidence/captureimage.dart';
 
 
 import 'assets/theme.dart';
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _widgetOptions = [
     SafePlacesPage(),
     GovContactsPage(),
-    
+    CameraPage(),
     AddContact(),
     SendSms(),
   ];
@@ -52,7 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.business),
             label: 'Gov Contacts',
           ),
-       
+        BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Gov Contacts',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.contacts),
             label: 'Add Contact',
