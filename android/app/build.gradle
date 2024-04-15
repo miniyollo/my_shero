@@ -1,3 +1,16 @@
+buildscript {
+    ext.kotlin_version = '1.8.10'  // Make sure this is the Kotlin version you mentioned.
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'  // Ensure using Gradle 7.4.2
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+       
+    }
+}
+
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -24,7 +37,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.flutter_application_3"
-    compileSdk 33
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/screens/evidence/captureimage.dart';
+import 'package:flutter_application_3/screens/siren/siren.dart';
 
 
 import 'assets/theme.dart';
@@ -28,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
     CameraPage(),
     AddContact(),
     SendSms(),
+    SirenPage(),
+ 
   ];
 
   void _onItemTapped(int index) {
@@ -61,9 +64,14 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.contacts),
             label: 'Add Contact',
           ),
+        
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
             label: 'Add Contact',
+          ),
+             BottomNavigationBarItem(
+            icon: Icon(Icons.surround_sound_outlined),
+            label: 'sound',
           ),
         ],
         currentIndex: _selectedIndex,

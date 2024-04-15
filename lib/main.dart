@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 
@@ -6,6 +7,7 @@ import 'homepage.dart';
 
 
 void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
  
   runApp(const MyApp());
 }
